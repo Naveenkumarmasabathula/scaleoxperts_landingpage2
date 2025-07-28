@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>ScaleoXperts | Driving Growth Through Expert Business Consulting</title>
+    <meta name="description" content="ScaleoXperts offers expert business consulting to accelerate your growth. Partner with us for data-driven strategies in digital transformation, marketing, and operational excellence.">
+    <meta name="keywords" content="business consulting, digital transformation, marketing strategy, operational excellence, business growth, AI strategy">
+    <meta name="author" content="ScaleoXperts">
+    <link rel="canonical" href="https://www.scaleoxperts.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.scaleoxperts.com/">
+    <meta property="og:title" content="ScaleoXperts | Driving Growth Through Expert Business Consulting">
+    <meta property="og:description" content="Partner with ScaleoXperts for data-driven strategies in digital transformation, marketing, and operational excellence to accelerate your growth.">
+    <meta property="og:image" content="https://placehold.co/1200x630/004A99/FFFFFF?text=ScaleoXperts">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.scaleoxperts.com/">
+    <meta property="twitter:title" content="ScaleoXperts | Driving Growth Through Expert Business Consulting">
+    <meta property="twitter:description" content="Partner with ScaleoXperts for data-driven strategies to accelerate your business growth.">
+    <meta property="twitter:image" content="https://placehold.co/1200x630/004A99/FFFFFF?text=ScaleoXperts">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://placehold.co/32x32/FF7800/FFFFFF?text=S" type="image/png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Styles & Critical CSS -->
+    <style>
+        /* Base Styles & Brand Palette */
+        :root {
+            --primary: #FF7800;
+            --secondary: #004A99;
+            --accent: #32C48D;
+            --neutral-dark: #1a202c;
+            --neutral-light: #f7fafc;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--neutral-dark);
+            background-color: #FFFFFF;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        /* Typography Scale (Mobile First) */
+        h1 { font-size: 40px; }
+        h2 { font-size: 32px; }
+        h3 { font-size: 24px; }
+        h4 { font-size: 20px; }
+        h5 { font-size: 18px; }
+        h6 { font-size: 16px; }
+        .body-text { font-size: 16px; }
+        .caption-text { font-size: 14px; }
+
+        @media (min-width: 768px) {
+            h1 { font-size: 48px; }
+            h2 { font-size: 40px; }
+            h3 { font-size: 32px; }
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(255, 120, 0, 0.3), 0 4px 6px -2px rgba(255, 120, 0, 0.15);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+        .btn-secondary:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        .btn-disabled {
+            background-color: #cbd5e0;
+            color: #a0aec0;
+            cursor: not-allowed;
+        }
+
+        /* Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card-hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Sticky Header */
+        #sticky-header {
+            transition: top 0.3s ease-in-out;
+        }
+
+        /* Testimonial Carousel */
+        .carousel-item { display: none; }
+        .carousel-item.active { display: block; }
+        
+        /* FAQ Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        
+        /* Gemini AI Feature Styles */
+        .gemini-loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    
+    <!-- Hotjar Tracking Code -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:0,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ScaleoXperts",
+      "url": "https://www.scaleoxperts.com/",
+      "logo": "https://placehold.co/200x60/004A99/FFFFFF?text=ScaleoXperts",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-555-123-4567",
+        "contactType": "customer service"
+      },
+      "sameAs": [
+        "https://www.facebook.com/scaleoxperts",
+        "https://www.twitter.com/scaleoxperts",
+        "https://www.linkedin.com/company/scaleoxperts"
+      ]
+    }
+    </script>
+</head>
+<body class="bg-white">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Sticky Header -->
+    <header id="sticky-header" class="bg-white/80 backdrop-blur-lg shadow-sm fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold" style="color: var(--secondary);">ScaleoXperts</a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-primary transition">About</a>
+                    <a href="#services" class="text-gray-600 hover:text-primary transition">Services</a>
+                    <a href="#ai-sandbox" class="text-gray-600 hover:text-primary transition">AI Sandbox</a>
+                    <a href="#case-studies" class="text-gray-600 hover:text-primary transition">Case Studies</a>
+                    <a href="#faq" class="text-gray-600 hover:text-primary transition">FAQ</a>
+                </nav>
+                <div class="hidden md:block">
+                    <a href="#contact" class="btn btn-primary">Book Consultation</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Services</a>
+                <a href="#ai-sandbox" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">AI Sandbox</a>
+                <a href="#case-studies" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Case Studies</a>
+                <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">FAQ</a>
+                <a href="#contact" class="block w-full text-left mt-2 px-3 py-2 rounded-md text-base font-medium btn btn-primary">Book Consultation</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32">
+            <div class="absolute inset-0 bg-gray-50 overflow-hidden">
+                <img src="https://placehold.co/1920x1080/e2e8f0/cccccc?text=Hero+Background" alt="Abstract background image" class="w-full h-full object-cover opacity-50" loading="eager">
+                <div class="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
+            </div>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
+                <h1 id="hero-headline" class="text-4xl md:text-6xl font-extrabold tracking-tight" style="color: var(--secondary);">
+                    <span class="block">Accelerate Your Business Growth</span>
+                    <span class="block text-primary mt-2">with Data-Driven Strategy</span>
+                </h1>
+                <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-gray-600">We help you navigate the complexities of digital transformation to unlock sustainable growth and a powerful competitive edge.</p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="#contact" class="btn btn-primary text-lg w-full sm:w-auto">Get Your Free Proposal</a>
+                    <button id="generate-headline-btn" class="btn btn-secondary text-lg w-full sm:w-auto">✨ Generate New Headline</button>
+                </div>
+                <div class="mt-8 text-sm text-gray-500">
+                    <p><span class="font-bold text-accent">Only 5 discovery calls left this month!</span> Book now to secure your spot.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us & Stats Section -->
+        <section id="about" class="py-16 lg:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl lg:text-4xl font-bold" style="color: var(--secondary);">About Us</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">We are a team of passionate strategists, analysts, and innovators dedicated to your success.</p>
+                </div>
+                <div class="mt-12 grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in-up">
+                        <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
+                        <p class="text-gray-600 mb-6">To empower businesses with transformative strategies and actionable insights that drive measurable results and long-term value.</p>
+                        <h3 class="text-2xl font-bold mb-4">Our Vision</h3>
+                        <p class="text-gray-600">To be the leading catalyst for business innovation and growth, recognized for our commitment to client success and industry excellence.</p>
+                    </div>
+                    <div class="fade-in-up">
+                        <img src="https://placehold.co/600x400/004A99/FFFFFF?text=Our+Team" alt="ScaleoXperts team collaborating" class="rounded-lg shadow-lg" style="border-radius: 4px;">
+                    </div>
+                </div>
+                <div class="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+                    <div class="fade-in-up p-6 bg-gray-50 rounded-lg">
+                        <span class="counter text-5xl font-bold text-primary" data-target="60">0</span><span class="text-5xl font-bold text-primary">+</span>
+                        <p class="mt-2 text-lg text-gray-600">Clients Served</p>
+                    </div>
+                    <div class="fade-in-up p-6 bg-gray-50 rounded-lg" style="transition-delay: 200ms;">
+                        <span class="counter text-5xl font-bold text-primary" data-target="95">0</span><span class="text-5xl font-bold text-primary">%</span>
+                        <p class="mt-2 text-lg text-gray-600">Client Satisfaction</p>
+                    </div>
+                    <div class="fade-in-up p-6 bg-gray-50 rounded-lg" style="transition-delay: 400ms;">
+                        <span class="counter text-5xl font-bold text-primary" data-target="15">0</span><span class="text-5xl font-bold text-primary">+</span>
+                        <p class="mt-2 text-lg text-gray-600">Years of Experience</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-16 lg:py-24 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl lg:text-4xl font-bold" style="color: var(--secondary);">Our Services</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">We provide a comprehensive suite of services to address your most critical business challenges.</p>
+                </div>
+                <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md card-hover-lift fade-in-up">
+                        <div class="text-4xl mb-4" style="color: var(--primary);"><i class="fas fa-chart-line"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Digital Transformation</h3>
+                        <p class="text-gray-600 mb-4">Modernize your operations and technology stack to improve efficiency, agility, and customer experience in the digital age.</p>
+                        <a href="#" class="font-semibold text-primary hover:underline">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md card-hover-lift fade-in-up" style="transition-delay: 200ms;">
+                        <div class="text-4xl mb-4" style="color: var(--primary);"><i class="fas fa-bullhorn"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Marketing & Sales Strategy</h3>
+                        <p class="text-gray-600 mb-4">Develop and execute powerful marketing and sales strategies that build your brand, generate leads, and drive revenue growth.</p>
+                        <a href="#" class="font-semibold text-primary hover:underline">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md card-hover-lift fade-in-up" style="transition-delay: 400ms;">
+                        <div class="text-4xl mb-4" style="color: var(--primary);"><i class="fas fa-cogs"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Operational Excellence</h3>
+                        <p class="text-gray-600 mb-4">Optimize your processes, workflows, and supply chain to reduce costs, improve quality, and increase overall productivity.</p>
+                        <a href="#" class="font-semibold text-primary hover:underline">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- AI Strategy Sandbox Section -->
+        <section id="ai-sandbox" class="py-16 lg:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl lg:text-4xl font-bold" style="color: var(--secondary);">✨ AI Strategy Sandbox</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Have a business goal in mind? Get an instant, high-level strategy crafted by our AI.</p>
+                </div>
+                <div class="mt-12 max-w-3xl mx-auto bg-gray-50 p-8 rounded-lg shadow-lg">
+                    <div class="mb-4">
+                        <label for="business-goal" class="block text-lg font-medium text-gray-700 mb-2">Enter Your Business Goal:</label>
+                        <textarea id="business-goal" name="business-goal" rows="3" class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary" placeholder="e.g., Increase online sales by 20% in the next quarter."></textarea>
+                    </div>
+                    <button id="generate-strategy-btn" class="btn btn-primary w-full text-lg">Generate My 3-Step Strategy</button>
+                    <div id="strategy-result" class="mt-6">
+                        <!-- AI-generated content will appear here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- USP Section -->
+        <section class="py-16 lg:py-24 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                     <h2 class="text-3xl lg:text-4xl font-bold" style="color: var(--secondary);">Why Choose Us?</h2>
+                     <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Our unique approach sets us apart and delivers exceptional value.</p>
+                </div>
+                <div class="mt-12 grid md:grid-cols-3 gap-8 text-center">
+                    <div class="fade-in-up">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mx-auto mb-4">
+                            <i class="fas fa-brain text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Expert Strategists</h3>
+                        <p class="mt-2 text-gray-600">Our team consists of industry veterans with deep expertise and a proven track record of success.</p>
+                    </div>
+                    <div class="fade-in-up" style="transition-delay: 200ms;">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mx-auto mb-4">
+                            <i class="fas fa-chart-pie text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Data-Driven Insights</h3>
+                        <p class="mt-2 text-gray-600">We leverage advanced analytics to uncover actionable insights that inform every recommendation.</p>
+                    </div>
+                    <div class="fade-in-up" style="transition-delay: 400ms;">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mx-auto mb-4">
+                            <i class="fas fa-handshake text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Collaborative Partnership</h3>
+                        <p class="mt-2 text-gray-600">We work as an extension of your team, ensuring alignment and a shared commitment to your goals.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof (Testimonials) -->
+        <section class="py-16 lg:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl lg:text-4xl font-bold" style="color: var(--secondary);">Loved by Businesses Worldwide</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Don't just take our word for it. Here's what our clients have to say.</p>
+                </div>
+                <div class="mt-12 relative">
+                    <div id="testimonial-carousel" class="max-w-3xl mx-auto text-center">
+                        <!-- Testimonials remain the same -->
+                        <div class="carousel-item active">
+                            <img src="https://i.pravatar.cc/100?u=a" alt="Jane Doe" class="w-24 h-24 rounded-full mx-auto mb-4 shadow-lg">
+                            <p class="text-xl italic text-gray-700">"ScaleoXperts completely transformed our approach to digital marketing. Their insights led to a 150% increase in qualified leads within six months."</p>
+                            <p class="mt-4 font-bold text-lg">Jane Doe</p>
+                            <p class="text-gray-500">CEO, Innovate Inc.</p>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://i.pravatar.cc/100?u=b" alt="John Smith" class="w-24 h-24 rounded-full mx-auto mb-4 shadow-lg">
+                            <p class="text-xl italic text-gray-700">"The operational efficiencies we gained from their consultation were incredible. We reduced production costs by 20% while improving quality."</p>
+                            <p class="mt-4 font-bold text-lg">John Smith</p>
+                            <p class="text-gray-500">COO, TechCorp</p>
+                        </div>
+                        <div class="carousel-item">
+                           <img src="https://i.pravatar.cc/100?u=c" alt="Emily White" class="w-24 h-24 rounded-full mx-auto mb-4 shadow-lg">
+                           <p class="text-xl italic text-gray-700">"A true partner in our growth. Their strategic guidance was invaluable during our expansion into new markets."</p>
+                           <p class="mt-4 font-bold text-lg">Emily White</p>
+                           <p class="text-gray-500">Founder, Global Ventures</p>
+                        </div>
+                    </div>
+                    <button id="prev-testimonial" class="absolute top-1/2 left-0 -translate-y-1/2 transform bg-white/50 hover:bg-white p-2 rounded-full shadow-md text-primary text-2xl"><i class="fas fa-chevron-left"></i></button>
+                    <button id="next-testimonial" class="absolute top-1/2 right-0 -translate-y-1/2 transform bg-white/50 hover:bg-white p-2 rounded-full shadow-md text-primary text-2xl"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Study Slider -->
+        <section id="case-studies" class="py-16 lg:py-24 bg-gray-50">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl lg:text-4xl font-bold" style="color: var(--secondary);">Our Proven Results</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">See how we've helped businesses like yours achieve remarkable outcomes.</p>
+                </div>
+                <div class="mt-12 relative">
+                    <div id="case-study-slider" class="overflow-hidden">
+                        <div id="case-study-track" class="flex transition-transform duration-500 ease-in-out">
+                            <div class="w-full flex-shrink-0">
+                                <div class="grid md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-lg">
+                                    <img src="https://placehold.co/500x350/FF7800/FFFFFF?text=Case+Study+1" alt="Case Study 1" class="rounded-lg shadow-md w-full" loading="lazy">
+                                    <div>
+                                        <h3 class="text-2xl font-bold mb-4">E-commerce Sales Boost</h3>
+                                        <p class="mb-2"><strong class="text-secondary">Problem:</strong> Stagnant online sales and low conversion rates.</p>
+                                        <p class="mb-2"><strong class="text-secondary">Solution:</strong> Overhauled the user experience, implemented a targeted ad strategy, and optimized the checkout funnel.</p>
+                                        <p class="mb-4"><strong class="text-secondary">Outcome:</strong> Achieved significant growth and improved customer engagement.</p>
+                                        <div class="flex flex-wrap gap-4 text-center">
+                                            <div class="bg-accent/10 p-3 rounded-md flex-1">
+                                                <p class="text-2xl font-bold text-accent">+200%</p>
+                                                <p class="text-sm text-gray-600">Revenue Growth</p>
+                                            </div>
+                                            <div class="bg-accent/10 p-3 rounded-md flex-1">
+                                                <p class="text-2xl font-bold text-accent">+75%</p>
+                                                <p class="text-sm text-gray-600">Conversion Rate</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full flex-shrink-0">
+                                <div class="grid md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-lg">
+                                    <img src="https://placehold.co/500x350/004A99/FFFFFF?text=Case+Study+2" alt="Case Study 2" class="rounded-lg shadow-md w-full" loading="lazy">
+                                    <div>
+                                        <h3 class="text-2xl font-bold mb-4">SaaS User Retention</h3>
+                                        <p class="mb-2"><strong class="text-secondary">Problem:</strong> High customer churn and low feature adoption.</p>
+                                        <p class="mb-2"><strong class="text-secondary">Solution:</strong> Conducted user research, redesigned the onboarding process, and launched an in-app guidance system.</p>
+                                        <p class="mb-4"><strong class="text-secondary">Outcome:</strong> Drastically reduced churn and increased user lifetime value.</p>
+                                        <div class="flex flex-wrap gap-4 text-center">
+                                            <div class="bg-accent/10 p-3 rounded-md flex-1">
+                                                <p class="text-2xl font-bold text-accent">-40%</p>
+                                                <p class="text-sm text-gray-600">Customer Churn</p>
+                                            </div>
+                                            <div class="bg-accent/10 p-3 rounded-md flex-1">
+                                                <p class="text-2xl font-bold text-accent">+60%</p>
+                                                <p class="text-sm text-gray-600">Feature Adoption</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center mt-8 gap-3">
+                        <button class="case-study-dot active bg-primary h-3 w-3 rounded-full" data-slide="0"></button>
+                        <button class="case-study-dot bg-gray-300 h-3 w-3 rounded-full" data-slide="1"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lead Magnet Section -->
+        <section id="contact" class="py-16 lg:py-24" style="background-color: var(--secondary);">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="text-white">
+                        <h2 class="text-3xl lg:text-4xl font-bold">Get Your Free Growth Blueprint</h2>
+                        <p class="mt-4 text-lg text-gray-200">Download our exclusive e-book, "The 5 Pillars of Sustainable Growth," and start building a more profitable future for your business today.</p>
+                    </div>
+                    <div>
+                        <form id="lead-magnet-form" class="bg-white p-8 rounded-lg shadow-2xl">
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                <input type="text" id="name" name="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                <p class="error-message text-red-500 text-sm mt-1 hidden">Please enter your full name.</p>
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-sm font-medium text-gray-700">Work Email</label>
+                                <input type="email" id="email" name="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                <p class="error-message text-red-500 text-sm mt-1 hidden">Please enter a valid email address.</p>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-full">Download Now</button>
+                        </form>
+                        <div id="form-success-message" class="hidden mt-4 p-4 bg-accent/10 text-accent font-semibold rounded-lg">
+                            Thank you! Your e-book is on its way to your inbox.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-16 lg:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl lg:text-4xl font-bold" style="color: var(--secondary);">✨ AI-Powered Q&A Hub</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Have a question? Ask our AI assistant.</p>
+                </div>
+                
+                <!-- AI Question Form -->
+                <div class="mt-12 max-w-3xl mx-auto bg-gray-50 p-8 rounded-lg shadow-lg">
+                    <form id="ai-faq-form">
+                        <label for="ai-question" class="block text-lg font-medium text-gray-700 mb-2">Ask anything about our services:</label>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input type="text" id="ai-question" name="ai-question" class="flex-grow w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary" placeholder="e.g., What is your process for digital transformation?">
+                            <button type="submit" class="btn btn-primary">Get Answer</button>
+                        </div>
+                    </form>
+                    <div id="ai-answer" class="mt-6">
+                        <!-- AI-generated answer will appear here -->
+                    </div>
+                </div>
+
+                <div class="mt-16 max-w-3xl mx-auto">
+                    <h3 class="text-2xl font-bold text-center mb-8">Or see our Frequently Asked Questions:</h3>
+                    <div class="space-y-4" id="faq-accordion">
+                        <!-- FAQ Item 1 -->
+                        <div class="border-b border-gray-200 pb-4">
+                            <button class="accordion-button w-full flex justify-between items-center text-left text-lg font-semibold">
+                                <span>What types of businesses do you work with?</span>
+                                <i class="fas fa-chevron-down transform transition-transform"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="pt-4 text-gray-600">We work with a diverse range of clients, from fast-growing startups to established Fortune 500 companies across various industries including tech, e-commerce, healthcare, and finance.</p>
+                            </div>
+                        </div>
+                        <!-- FAQ Item 2 -->
+                        <div class="border-b border-gray-200 pb-4">
+                            <button class="accordion-button w-full flex justify-between items-center text-left text-lg font-semibold">
+                                <span>How do you measure the success of a project?</span>
+                                <i class="fas fa-chevron-down transform transition-transform"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="pt-4 text-gray-600">Success is measured against pre-defined Key Performance Indicators (KPIs) that we establish together at the start of the project. These often include metrics like revenue growth, cost savings, market share, and customer satisfaction.</p>
+                            </div>
+                        </div>
+                        <!-- FAQ Item 3 -->
+                        <div class="border-b border-gray-200 pb-4">
+                            <button class="accordion-button w-full flex justify-between items-center text-left text-lg font-semibold">
+                                <span>What is the typical engagement process?</span>
+                                <i class="fas fa-chevron-down transform transition-transform"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="pt-4 text-gray-600">Our process begins with a discovery phase to understand your challenges. We then move to strategy development, implementation, and finally, ongoing monitoring and optimization to ensure long-term success.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold">ScaleoXperts</h3>
+                    <p class="mt-2 text-gray-400">Your Partner in Growth.</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold">Quick Links</h4>
+                    <ul class="mt-2 space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white">Services</a></li>
+                        <li><a href="#case-studies" class="text-gray-400 hover:text-white">Case Studies</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold">Legal</h4>
+                    <ul class="mt-2 space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold">Contact</h4>
+                    <ul class="mt-2 space-y-2 text-gray-400">
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>123 Growth Ave, New York, USA</li>
+                        <li><i class="fas fa-phone-alt mr-2"></i>(555) 123-4567</li>
+                        <li><i class="fas fa-envelope mr-2"></i>contact@scaleoxperts.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-6 text-center text-gray-500">
+                <p>&copy; <span id="current-year"></span> ScaleoXperts. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Exit-Intent Modal -->
+    <div id="exit-intent-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-xl max-w-md w-full relative m-4">
+            <button id="close-modal" class="absolute top-2 right-3 text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+            <h3 class="text-2xl font-bold text-secondary mb-4">Wait! Before You Go...</h3>
+            <p class="text-gray-600 mb-6">Get our FREE "7 Mistakes to Avoid in Digital Transformation" checklist. Enter your email to get instant access.</p>
+            <form id="exit-intent-form">
+                <input type="email" id="exit-email" name="exit-email" required placeholder="Your best email address" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                <button type="submit" class="btn btn-primary w-full mt-4">Get My Checklist</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Gemini API Call Function ---
+            const callGemini = async (prompt) => {
+                const apiKey = "AIzaSyDOmtTmXhqPBPLcfloUjiv4AWrinc62nXQ"; // API key is handled by the environment
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                
+                const payload = {
+                    contents: [{
+                        role: "user",
+                        parts: [{ text: prompt }]
+                    }]
+                };
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`API call failed with status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        return result.candidates[0].content.parts[0].text;
+                    } else {
+                        console.error("Unexpected API response structure:", result);
+                        return "Sorry, we couldn't generate a response right now.";
+                    }
+                } catch (error) {
+                    console.error("Error calling Gemini API:", error);
+                    return "An error occurred. Please try again later.";
+                }
+            };
+
+            // --- ✨ AI Headline Generator ---
+            const generateHeadlineBtn = document.getElementById('generate-headline-btn');
+            const heroHeadline = document.getElementById('hero-headline');
+
+            generateHeadlineBtn.addEventListener('click', async () => {
+                const originalText = generateHeadlineBtn.innerHTML;
+                generateHeadlineBtn.innerHTML = '<div class="gemini-loader" style="width: 20px; height: 20px; margin: 0 auto;"></div>';
+                generateHeadlineBtn.disabled = true;
+
+                const currentHeadline = heroHeadline.innerText;
+                const prompt = `You are a world-class marketing copywriter. Generate a single, compelling, and short headline (under 12 words) for a business consultancy website called ScaleoXperts. The current headline is "${currentHeadline}". Make the new headline punchy and benefit-oriented. Provide only the headline text itself, without any quotation marks, labels, or extra formatting.`;
+                
+                const newHeadlineText = await callGemini(prompt);
+                
+                const words = newHeadlineText.split(' ');
+                const midpoint = Math.ceil(words.length / 2);
+                const line1 = words.slice(0, midpoint).join(' ');
+                const line2 = words.slice(midpoint).join(' ');
+                
+                heroHeadline.innerHTML = `<span class="block">${line1}</span><span class="block text-primary mt-2">${line2}</span>`;
+
+                generateHeadlineBtn.innerHTML = originalText;
+                generateHeadlineBtn.disabled = false;
+            });
+
+            // --- ✨ AI Strategy Sandbox ---
+            const generateStrategyBtn = document.getElementById('generate-strategy-btn');
+            const businessGoalInput = document.getElementById('business-goal');
+            const strategyResultDiv = document.getElementById('strategy-result');
+
+            generateStrategyBtn.addEventListener('click', async () => {
+                const goal = businessGoalInput.value;
+                if (!goal.trim()) {
+                    strategyResultDiv.innerHTML = `<p class="text-red-500">Please enter a business goal first.</p>`;
+                    return;
+                }
+
+                strategyResultDiv.innerHTML = '<div class="gemini-loader"></div>';
+                generateStrategyBtn.disabled = true;
+
+                const prompt = `You are an expert business strategist. A potential client has entered the following business goal: "${goal}". Generate a simple, actionable, high-level 3-step strategy for a business consultancy to propose. Format the response with clear headings for each step (e.g., "**Step 1: Foundational Analysis**"). Each step should have a short, clear description (1-2 sentences). Do not add any introductory or concluding text, just the 3 steps.`;
+                
+                const strategyText = await callGemini(prompt);
+
+                const formattedStrategy = strategyText
+                    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-secondary">$1</strong>')
+                    .replace(/\n/g, '<br>');
+
+                strategyResultDiv.innerHTML = `<div class="p-4 border-l-4 border-primary bg-blue-50 rounded-r-lg">${formattedStrategy}</div>`;
+                generateStrategyBtn.disabled = false;
+            });
+
+            // --- ✨ AI-Powered Q&A Hub ---
+            const aiFaqForm = document.getElementById('ai-faq-form');
+            const aiQuestionInput = document.getElementById('ai-question');
+            const aiAnswerDiv = document.getElementById('ai-answer');
+
+            aiFaqForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const question = aiQuestionInput.value;
+                if (!question.trim()) {
+                    aiAnswerDiv.innerHTML = `<p class="text-red-500">Please ask a question.</p>`;
+                    return;
+                }
+
+                aiAnswerDiv.innerHTML = '<div class="gemini-loader"></div>';
+                const submitButton = aiFaqForm.querySelector('button');
+                submitButton.disabled = true;
+
+                const pageContext = `
+                    ScaleoXperts is a business consultancy.
+                    Our Mission: To empower businesses with transformative strategies and actionable insights that drive measurable results and long-term value.
+                    Our Services: Digital Transformation, Marketing & Sales Strategy, Operational Excellence.
+                    Our Process: Discovery, strategy development, implementation, and ongoing optimization.
+                `;
+
+                const prompt = `You are an AI assistant for ScaleoXperts, a business consultancy. Answer the following user question based on the provided context. Be helpful, concise, and professional. If the question is outside the scope of business consulting, politely decline to answer.
+                
+                Context: ${pageContext}
+                
+                User Question: "${question}"
+                
+                Answer:`;
+
+                const answerText = await callGemini(prompt);
+                aiAnswerDiv.innerHTML = `<div class="p-4 border-l-4 border-accent bg-green-50 rounded-r-lg">${answerText}</div>`;
+                submitButton.disabled = false;
+                aiQuestionInput.value = '';
+            });
+
+
+            // --- Mobile Menu ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- Sticky Header ---
+            let lastScrollTop = 0;
+            const stickyHeader = document.getElementById('sticky-header');
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop && scrollTop > 200) {
+                    stickyHeader.style.top = '-100px';
+                } else {
+                    stickyHeader.style.top = '0';
+                }
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+
+            // --- Scroll Animations (Fade In Up) ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+            // --- Counter Animation ---
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = +counter.getAttribute('data-target');
+                        const duration = 2000;
+                        let start = 0;
+                        const stepTime = Math.abs(Math.floor(duration / target));
+                        
+                        const timer = setInterval(() => {
+                            start += 1;
+                            counter.textContent = start;
+                            if (start >= target) {
+                                counter.textContent = target;
+                                clearInterval(timer);
+                            }
+                        }, stepTime);
+                        
+                        observer.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.8 });
+
+            document.querySelectorAll('.counter').forEach(counter => counterObserver.observe(counter));
+            
+            // --- Testimonial Carousel ---
+            const testimonials = document.querySelectorAll('#testimonial-carousel .carousel-item');
+            const prevTestimonial = document.getElementById('prev-testimonial');
+            const nextTestimonial = document.getElementById('next-testimonial');
+            let currentTestimonial = 0;
+
+            function showTestimonial(index) {
+                testimonials.forEach((item, i) => {
+                    item.classList.toggle('active', i === index);
+                });
+            }
+
+            prevTestimonial.addEventListener('click', () => {
+                currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            });
+
+            nextTestimonial.addEventListener('click', () => {
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            });
+            
+            // --- Case Study Slider ---
+            const track = document.getElementById('case-study-track');
+            const dots = document.querySelectorAll('.case-study-dot');
+            
+            function updateSlider(slideIndex) {
+                track.style.transform = `translateX(-${slideIndex * 100}%)`;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('bg-primary', index === slideIndex);
+                    dot.classList.toggle('bg-gray-300', index !== slideIndex);
+                });
+            }
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    updateSlider(parseInt(dot.dataset.slide));
+                });
+            });
+
+            // --- FAQ Accordion ---
+            document.querySelectorAll('.accordion-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+                    const isOpening = !content.style.maxHeight;
+
+                    document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
+                    document.querySelectorAll('.accordion-button i').forEach(i => i.classList.remove('rotate-180'));
+
+                    if (isOpening) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        icon.classList.add('rotate-180');
+                    }
+                });
+            });
+
+            // --- Form Validation ---
+            document.getElementById('lead-magnet-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+                const nameInput = document.getElementById('name');
+                const emailInput = document.getElementById('email');
+                document.querySelectorAll('.error-message').forEach(msg => msg.classList.add('hidden'));
+
+                if (nameInput.value.trim() === '') {
+                    nameInput.nextElementSibling.classList.remove('hidden');
+                    isValid = false;
+                }
+                if (!/^\S+@\S+\.\S+$/.test(emailInput.value)) {
+                    emailInput.nextElementSibling.classList.remove('hidden');
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    this.classList.add('hidden');
+                    document.getElementById('form-success-message').classList.remove('hidden');
+                    console.log('Form submitted:', { name: nameInput.value, email: emailInput.value });
+                }
+            });
+
+            // --- Exit-Intent Modal ---
+            const exitModal = document.getElementById('exit-intent-modal');
+            const closeModal = document.getElementById('close-modal');
+            
+            const showExitModal = () => {
+                exitModal.classList.remove('hidden');
+                exitModal.classList.add('flex');
+            };
+            
+            document.addEventListener('mouseleave', e => {
+                if (e.clientY <= 0) showExitModal();
+            }, { once: true });
+
+            closeModal.addEventListener('click', () => {
+                exitModal.classList.add('hidden');
+                exitModal.classList.remove('flex');
+            });
+            
+            document.getElementById('exit-intent-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you! Your checklist is on its way.');
+                exitModal.classList.add('hidden');
+                exitModal.classList.remove('flex');
+            });
+
+            // --- Update Footer Year ---
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
